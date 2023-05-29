@@ -1,0 +1,27 @@
+
+object WordCount {
+  def main(args: Array[String]) {
+    var linesRDD = sc.textFile("name.txt");
+var wordsRDD = linesRDD.flatMap(_.split(" "));
+var wordsKvRdd = wordsRDD.map((_,1));
+var wordCounts = wordsKvRdd.reduceByKey(_+_);
+wordCounts.saveAsTextFile("output1");
+wordCounts.foreach(println);
+
+  }
+}
+
+
+
+to run the file in spark shell:
+
+1. :load main.scala
+2. WordCount.main(Array())
+
+OR
+
+run line by line in scala shell
+
+name.txt 
+
+My name is tanishq

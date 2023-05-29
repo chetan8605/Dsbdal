@@ -1,0 +1,13 @@
+scala> var linesRDD = sc.textFile("input1.txt")
+scala> var wordsRDD = linesRDD.flatMap(_.split(" "))
+scala> var wordsKvRdd = wordsRDD.map((_, 1))
+scala> var wordCounts = wordsKvRdd.reduceByKey(_+_)
+scala> wordCounts.saveAsTextFile("myopt3")
+scala> wordCounts.foreach(println)
+
+l1 = sc.textFile("input.txt")
+l2 = l1.flatMap(_,split(" "))
+l3 = l2.map((_,1))
+l4 = l3.reduceByKey(_+_)
+l4.saveAsTextFile("op3.txt")
+l4.foreach(println)
